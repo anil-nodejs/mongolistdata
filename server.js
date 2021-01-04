@@ -1,12 +1,13 @@
 const express=require('express');
 const mongoose=require('mongoose');
+require('dotenv').config()
 var app=express();
-const port=3005;
+const port=process.env.PORT;
 
 var Data=require('./model');
 
 //db
-const db ='mongodb+srv://heroku_vnts03fq:'+encodeURIComponent('uKPzYO9ZvXdwko5u')+'@alivenowdb.5klxw.mongodb.net/heroku_vnts03fq?retryWrites=true';
+const db ='mongodb+srv://'+`${process.env.db_user}`+':'+encodeURIComponent(`${process.env.db_pass}`)+'@alivenowdb.5klxw.mongodb.net/heroku_vnts03fq?retryWrites=true';
 mongoose.connect(db,{
     useNewUrlParser:true,
     useUnifiedTopology:true
